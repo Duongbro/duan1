@@ -1,51 +1,51 @@
 <?php
-class comment
+class comments
 {
     
-    var $id_comment = null;
-    var $id_product = null;
-    var $id_user = null;
-    var $fullname = null;
+    var $comments_id = null;
+    var $product_id = null;
+    var $user_id = null;
     var $date= null;
     var $content = null;
+    
   
 
     public function getlist()
     {
         $db = new connect();
-        $query = "SELECT*FROM comment";
+        $query = "SELECT*FROM comments";
         $result = $db->pdo_query($query);
         return $result;
     }
 
-    public function getById( $id_comment)
+    public function getById($comments_id)
     {
         $db = new connect();
-        $query = "SELECT*FROM comment WHERE id=" . $id_comment;
+        $query = "SELECT*FROM comments WHERE id=" . $comments_id;
         $result = $db->pdo_query_one($query);
         return $result;
     }
     // viết một hàm insert dữ liệu, thêm mới dữ liệu
-    public function add($id_product,$id_user, $fullname, $date, $content){
+    public function add($product_id,$user_id, $date, $content){
         $db = new connect();
-        $query = "INSERT INTO `comment`(`id_product`,`id_user`,`fullname`,`date`,`conten`) VALUES ('$id_product','$id_user','$fullname','$date','$content')";
+        $query = "INSERT INTO `commenst`(`product_id`,`user_id`,`date`,`conten`) VALUES ('$product_id','$user_id','$date','$content')";
         $result = $db->pdo_execute($query);
         return $result;
     }
 
     // hàm cập nhật dữ liệu
-    public function update($id_product ,$id_user,$fullname, $date, $email, $content)
+    public function update($product_id ,$user_id, $date, $content)
     {
         $db = new connect();
-        $query = "UPDATE `comment` SET `id_product`='$id_product', `id_user` = '$id_user',`date`='$date', `email`='$email', `content`='$content' WHERE id =  $id_comment";
+        $query = "UPDATE `comments` SET `product_id`='$product_id', `user_id` = '$user_id',`date`='$date',  `content`='$content' WHERE id =  $comments_id";
         $result = $db->pdo_execute($query);
         return $result;
     }
     
-    public function delete( $id_comment)
+    public function delete($comments_id)
     {
         $db = new connect();
-        $query = "DELETE  FROM comment WHERE id=' $id_comment'";
+        $query = "DELETE  FROM comments WHERE id=' $comments_id'";
         $result = $db->pdo_execute($query);
         return $result;
     }
