@@ -2,7 +2,7 @@
 class oders
 {
     
-    var $id_oders = null;
+    var $oders_id = null;
     var $fullname = null;
     var $email = null;
     var $phone = null;
@@ -24,7 +24,7 @@ class oders
     public function getById($id_oders)
     {
         $db = new connect();
-        $query = "SELECT*FROM oders WHERE id=" .$id_oders;
+        $query = "SELECT*FROM oders WHERE id=" .$oders_id;
         $result = $db->pdo_query_one($query);
         return $result;
     }
@@ -37,10 +37,10 @@ class oders
     }
 
     // hàm cập nhật dữ liệu
-    public function update($id_oders,$fullname,$email,$phone, $address, $note, $oder_data, $status,$total_money)
+    public function update($oders_id,$fullname,$email,$phone, $address, $note, $oder_data, $status,$total_money)
     {
         $db = new connect();
-        $query = "UPDATE `oders` SET `fullname`='$fullname', `email` = '$email', `phone`='$phone', `address`='$address', `note`='$note', ` oder_data`=' $oder_data',`$status` = 'status', `total_money`= '$total_money' WHERE id = $id_oders";
+        $query = "UPDATE `oders` SET `fullname`='$fullname', `email` = '$email', `phone`='$phone', `address`='$address', `note`='$note', ` oder_data`=' $oder_data',`$status` = 'status', `total_money`= '$total_money' WHERE id = $oders_id";
         $result = $db->pdo_execute($query);
         return $result;
     }
@@ -48,7 +48,7 @@ class oders
     public function delete($id_oders)
     {
         $db = new connect();
-        $query = "DELETE  FROM oders WHERE id='$id_oders'";
+        $query = "DELETE  FROM oders WHERE id='$oders_id'";
         $result = $db->pdo_execute($query);
         return $result;
     }
