@@ -4,7 +4,7 @@ class oders
     
     var $oders_id = null;
     var $fullname = null;
-    var $email = null;
+    var $ema = null;
     var $phone = null;
     var $address= null;
     var $note = null;
