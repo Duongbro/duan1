@@ -1,67 +1,84 @@
 <?php
-class users
-{
-    
-    var $user_id = null;
-    var $name = null;
-    var $password = null;
-    var $fullname = null;
-    var $email= null;
-    var $phone = null;
-    var $address = null;
-    var $role = null;
-    var $avartar = null;
-    
+    class users{
+        var $user_id  = null;
+        var $name = null;
+        var $password = null;
+        var $fullname = null;
+        var $email = null;
+        var $phone = null;
+        var $address = null;
+        var $role = null;
+        var $avatar = null;
 
-    public function getlist()
+        function getUsers()
+        {
+            $db = new connect();
+            $select = "SELECT * FROM users";
+            return $db->pdo_query($select);
+        }
+        public function addUsers($name, $email, $password, $avatar, $address)
     {
         $db = new connect();
-        $query = "SELECT*FROM users";
-        $result = $db->pdo_query($query);
+        $query = "INSERT INTO users (name, email, password, avatar, address) VALUES ('$name', '$email','$password', '$avatar', '$address')";
+        $result = $db->pdo_execute($query);
         return $result;
     }
-
-    public function getById($user_id )
+        public function delete($user_id )
     {
         $db = new connect();
-        $query = "SELECT*FROM users WHERE id=" .$user_id;
+        $query = "DELETE FROM users WHERE user_id  = ". $user_id ;
+        $result = $db->pdo_query_one($query);
+        return $result;
+
+        
+    }
+        public function checkUsers($username,$password) 
+        { 
+            $db = new connect();               
+            $select="SELECT * FROM users WHERE name='$username' AND password='$password'"; 
+            $result = $db->pdo_query_one($select);
+            if($result!=null) 
+                return true; 
+            else 
+                return false;
+        }
+
+        public function usersid($username,$password) 
+        { 
+            $db = new connect();               
+            $select="SELECT user_id  FROM users WHERE name='$username' AND password='$password'"; 
+            $result = $db->pdo_query_one($select);
+            return $result;
+        }
+        public function getCount1()
+        {
+            $db = new connect();
+            $select = "SELECT count(*) AS soluong FROM users";
+            $result = $db->pdo_query($select);
+            return $result;
+        }
+
+        public function doimatkhau($password, $user_id ){
+            $db = new connect();
+            $query = "UPDATE users SET password= ? WHERE user_id  = ?";
+            $result = $db->pdo_execute($query,$password,$user_id );
+            return $result;
+        }
+
+        public function getByID($user_id )
+    {
+        $db = new connect();
+        $query = "SELECT * FROM users WHERE user_id  = ". $user_id ;
         $result = $db->pdo_query_one($query);
         return $result;
     }
-    // viết một hàm insert dữ liệu, thêm mới dữ liệu
-    public function add($name,$password,$fullname,$email, $phone, $address, $role){
-        $db = new connect();
-        $query = "INSERT INTO `user`(`username`,`password`,`role_id`,`email`,`sdt`) VALUES ('$name','$password','$email','$phone','$address','$role')";
-        $result = $db->pdo_execute($query);
-        return $result;
-    }
 
-    // hàm cập nhật dữ liệu
-    public function update($user_id ,$name,$fullname, $password, $email, $phone,$address,$role)
+    public function updateUser($user_id , $name, $email, $password, $avatar, $address)
     {
         $db = new connect();
-        $query = "UPDATE `user` SET `name`='$name', `fullname` = '$fullname',`password`='$password', `phone`='$phone', `email`='$email', `role`='$role' WHERE id = $user_id";
-        $result = $db->pdo_execute($query);
+        $query = "UPDATE users SET `name`='$name', `email`='$email', `password`='$password', `avatar`='$avatar', `address`='$address' WHERE user_id  = ".$user_id ;
+        $result = $db->pdo_query($query);
         return $result;
     }
-    
-    public function delete($user_id)
-    {
-        $db = new connect();
-        $query = "DELETE  FROM user WHERE id='$user_id'";
-        $result = $db->pdo_execute($query);
-        return $result;
-    }
-
-}    
-?>    
-
-    
-    
-    
-    
-    
-
-    
-
-    
+}
+?>
