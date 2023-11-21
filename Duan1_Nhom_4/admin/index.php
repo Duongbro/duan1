@@ -25,8 +25,6 @@
 include_once 'includes/pdo.php';
 include 'user/user.php';
 include "category/category.php";
-// include "product/product.php";
-// include "comment/comment.php";
 
 
 $action = 'home';
@@ -104,6 +102,17 @@ switch ($action) {
     <script src="content/assets/js/dashboard.js"></script>
     <script src="content/assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
+
+    <!-- Mô tả sản phẩm -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
 </body>
 
 </html>
