@@ -10,6 +10,7 @@ class users
     var $phone = null;
     var $address = null;
     var $role = null;
+    var $avartar = null;
     
 
     public function getlist()
@@ -20,7 +21,7 @@ class users
         return $result;
     }
 
-    public function getById($id)
+    public function getById($user_id )
     {
         $db = new connect();
         $query = "SELECT*FROM users WHERE id=" .$user_id;
