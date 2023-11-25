@@ -20,7 +20,7 @@
                             <ul>
                                 <li><a href="">Nam</a></li>
                                 <li><a href="">Nữ</a></li>
-                                <li><a href="?page=">Thể thao</a></li>
+                                <li><a href="">Thể thao</a></li>
                             </ul>
                         </li>
 
@@ -28,7 +28,7 @@
                         if (isset($_GET['logout'])) {
                             unset($_SESSION['user']);
                             unset($_SESSION['avatar']);
-                            header("Location: http://duan1user/?#");
+                            header("Location: index.php?page=home");
                             exit();
                         }
 
@@ -40,7 +40,7 @@
                             <li class="submenu">
                                 <?php if ($user): ?>
                                     <a href="#">
-                                        <img src="../img/<?php echo $avatar;?>" width="35" height="35">
+                                        <img src="../img/<?php echo $avatar;?>" width="35" height="35" style="border-radius: 100px">
                                         <?php echo $user; ?>
                                     </a>
                                     <ul>

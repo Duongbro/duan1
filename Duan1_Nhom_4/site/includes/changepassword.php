@@ -31,7 +31,7 @@
                 $messageConfirm = '<span style="color:red;">Mật khẩu mới và mật khẩu xác nhận không khớp.</span>';
             } else {
                 $users->doimatkhau($newPassword, $user_id);
-                $messageSuccess = '<span style="color:green;">Đổi mật khẩu thành công. <a href="http://duan1user/?page=home">Quay về trang chủ</a></span>';
+                $messageSuccess = '<span style="color:green;">Đổi mật khẩu thành công. <a href="?page=home">Quay về trang chủ</a></span>';
             }
         }
     }
@@ -43,12 +43,12 @@
     </div>
     <div class="form-container sign-in-container">
         <form action="#" class="form" method="post">
-            <h1 class="h1">Đổi mật khẩu</h1>
+            <h1 class="h1">ĐỔI MẬT KHẨU</h1>
 
-            <input type="text" placeholder="Mật khẩu hiện tại" class="input" name="currentPassword" id="currentPassword">
+            <input type="password" placeholder="Mật khẩu hiện tại" class="input" name="currentPassword" id="currentPassword">
             <span class="error"><?php echo $messageCurrent; ?></span>
 
-            <input type="text" placeholder="Mật khẩu mới" class="input" name="newPassword" id="newPassword">
+            <input type="password" placeholder="Mật khẩu mới" class="input" name="newPassword" id="newPassword">
             <span class="error"><?php echo $messageNew; ?></span>
 
             <input type="password" placeholder="Xác nhận mật khâu mới" class="input" name="confirmPassword" id="confirmPassword">

@@ -1,9 +1,9 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['logout'])) {
+    if (isset($_POST['logout'])) {
         // Nếu người dùng muốn đăng xuất
         unset($_SESSION['user']);
-        header("Location: http://duan1user/?#"); // Chuyển hướng đến trang chủ
+        header("Location: index.php?page=home"); // Chuyển hướng đến trang chủ
         exit();
     } else {
         // Nếu người dùng muốn đăng nhập
@@ -11,12 +11,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST["password"];
 
         $users = new users();
-        $isValid = $users->chaeckUsers($name,$password);
-       
+        $isValid = $users->chaeckUsers($name, $password);
+
         $users = new users();
         $get_user = $users->getUsers();
-        foreach($get_user as $get_user){
-            if($get_user ['name'] == $name && $get_user ['password'] == $password){
+        foreach ($get_user as $get_user) {
+            if ($get_user['name'] == $name && $get_user['password'] == $password) {
                 $_SESSION['user_id'] = $get_user['user_id'];
                 $_SESSION['avatar'] = $get_user['avatar']; // Lưu avatar vào session
             }
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($isValid) {
             $_SESSION['user'] = $name; // Lưu tên người dùng vào session
-            header("Location: http://duan1user/?#"); // Chuyển hướng đến trang chủ
+            header("Location: index.php?page=home"); // Chuyển hướng đến trang chủ
             exit();
         } else {
             echo "<span style='color:red'>Tên đăng nhập hoặc mật khẩu không đúng!</span>";
@@ -39,14 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-
-
-
-
 <div class="container" id="container">
-<div class="form-container sign-up-container">
-   
-</div>
+    <div class="form-container sign-up-container">
+
+    </div>
 
     <div class="form-container sign-in-container">
         <form action="#" method="post" class="form">
@@ -72,11 +68,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $password = $_POST["password"];
 
                     $users = new users();
-                    $isValid = $users->chaeckUsers($name,$password); 
+                    $isValid = $users->chaeckUsers($name, $password);
 
                     if ($isValid) {
                         $_SESSION['user'] = $name; // Lưu tên người dùng vào session
-                        header("Location: http://duan1user/?#"); // Chuyển hướng đến trang chủ
+                        header("Location: index.php?page=home"); // Chuyển hướng đến trang chủ
                         exit();
                     } else {
                         echo "<span style='color:red'>Tên đăng nhập hoặc mật khẩu không đúng!</span>";
@@ -85,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
             <a href="#">Quên mật khẩu?</a>
-            
+
             <button type="submit">Đăng nhập</button>
             <br>
             <br>
@@ -100,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="overlay-container">
         <div class="overlay">
-            
+
             <div class="overlay-panel overlay-right">
                 <h1 class="h1">Chào mừng trở lại!</h1>
                 <p style="color:white;font-weight: 500;" class="p">Để duy trì kết nối với chúng tôi vui lòng đăng nhập bằng thông tin cá nhân của bạn</p>
