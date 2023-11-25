@@ -19,9 +19,51 @@
                             <ul>
                                 <li><a href="">Nam</a></li>
                                 <li><a href="">Nữ</a></li>
-                                <li><a href="?page=profile">Thể thao</a></li>
+                                <li><a href="?page=">Thể thao</a></li>
                             </ul>
                         </li>
+
+                        <?php
+                        if (isset($_GET['logout'])) {
+                            unset($_SESSION['user']);
+                            unset($_SESSION['avatar']);
+                            header("Location: http://duan1user/?#");
+                            exit();
+                        }
+
+                        $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+                        $avatar = isset($_SESSION['avatar']) ? $_SESSION['avatar'] : null;
+                        ?>
+
+                        <ul>
+                            <li class="submenu">
+                                <?php if ($user): ?>
+                                    <a href="#">
+                                        <img src="../img/<?php echo $avatar;?>" width="35" height="35">
+                                        <?php echo $user; ?>
+                                    </a>
+                                    <ul>
+                                        <li><a href="?page=profile&user_id=<?= $_SESSION['user_id']; ?>">Hồ sơ của tôi</a>
+                                        </li>
+                                        <li><a href="">Giỏ hàng</a></li>
+                                        <li><a href="?page=changepassword&user_id=<?= $_SESSION['user_id']; ?>">Đổi mật khẩu</a></li>
+                                        <li><a href="?logout=true">Đăng xuất</a></li>
+                                    </ul>
+                                <?php else: ?>
+                                <li class="scroll-to-section"><a href="?page=login">Đăng nhập</a></li>
+                            <?php endif; ?>
+                            </li>
+                        </ul>
+                        <ul>
+                            <?php if ($user): ?>
+                            <?php else: ?>
+                                <li class="scroll-to-section"><a href="?page=register">Đăng ký</a></li>
+                            <?php endif; ?>
+                        </ul>
+
+
+
+
                         <!-- <li class="submenu">
                             <a href="javascript:;">Features</a>
                             <ul>
@@ -31,12 +73,12 @@
                                 <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
                             </ul>
                         </li> -->
-                        <li class="scroll-to-section"><a href="?page=login">Đăng nhập/Đăng ký</a></li>
-                    </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
+
+
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
                 </nav>
             </div>
         </div>

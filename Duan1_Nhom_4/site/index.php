@@ -26,6 +26,13 @@
 
     <link rel="stylesheet" href="assets/css/style1.css">
 
+    
+
+    
+
+  
+
+
     <!-- Profile User -->
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
@@ -36,10 +43,11 @@
 <body>
 
     <?php
-    // include_once '../admin/includes/pdo.php';
+    include_once '../admin/includes/pdo.php';
     // include "../admin/product/product.php";
     // include "../admin/category/category.php";
-    // include "../admin/user/user.php";
+    include "../admin/user/user.php";
+    
     // include "../admin/comment/comment.php";
 
 
@@ -66,6 +74,9 @@
         case "register":
             include 'includes/register.php';
             break;
+        case "changepassword":
+            include 'includes/changepassword.php';
+            break;        
         case "search":
             include 'includes/search.php';
             break;
@@ -86,7 +97,7 @@
             break;
         case "thoat":
             unset($_SESSION['user']);
-            unset($_SESSION['id_user']);
+            unset($_SESSION['user_id']);
             include 'includes/home.php';
             break;
         case "logout":

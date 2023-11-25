@@ -27,6 +27,7 @@ include 'user/user.php';
 include "category/category.php";
 
 
+
 $action = 'home';
 if (isset($_GET['page']))
     $action = $_GET['page'];

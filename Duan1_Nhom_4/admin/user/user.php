@@ -23,19 +23,47 @@
         $result = $db->pdo_execute($query);
         return $result;
     }
+    public function checkUsernameExists($name) {
+        $db = new connect();
+        $query = "SELECT * FROM users WHERE name = '$name'";
+        $result = $db->pdo_query_one($query);
+        return $result != null;
+    }
+    public function eckUchserpasswordExists($password) {
+        $db = new connect();
+        $query = "SELECT * FROM users WHERE password = '$password'";
+        $result = $db->pdo_query_one($query);
+        return $result != null;
+    }
+
+    public function addUsers2($name, $email, $password)
+    {
+        $db = new connect();
+        $query = "INSERT INTO users (name, email, password) VALUES ('$name', '$email','$password')";
+        $result = $db->pdo_execute($query);
+        return $result;
+    }
+    
+    public function getByID($user_id)
+    {
+        $db = new connect();
+        $query = 'SELECT * from users where user_id= '.$user_id;
+        $result = $db->pdo_query_one($query);
+        return $result;
+    }
         public function delete($user_id )
     {
         $db = new connect();
-        $query = "DELETE FROM users WHERE user_id  = ". $user_id ;
+        $query = "DELETE FROM users WHERE user_id  = ".$user_id ;
         $result = $db->pdo_query_one($query);
         return $result;
 
         
     }
-        public function checkUsers($username,$password) 
+        public function chaeckUsers($name,$password) 
         { 
             $db = new connect();               
-            $select="SELECT * FROM users WHERE name='$username' AND password='$password'"; 
+            $select="SELECT * FROM users WHERE name='$name' AND password='$password'"; 
             $result = $db->pdo_query_one($select);
             if($result!=null) 
                 return true; 
@@ -43,10 +71,10 @@
                 return false;
         }
 
-        public function usersid($username,$password) 
+        public function usersid($name,$password) 
         { 
             $db = new connect();               
-            $select="SELECT user_id  FROM users WHERE name='$username' AND password='$password'"; 
+            $select="SELECT user_id  FROM users WHERE name='$name' AND password='$password'"; 
             $result = $db->pdo_query_one($select);
             return $result;
         }
@@ -65,20 +93,23 @@
             return $result;
         }
 
-        public function getByID($user_id )
-    {
-        $db = new connect();
-        $query = "SELECT * FROM users WHERE user_id  = ". $user_id ;
-        $result = $db->pdo_query_one($query);
-        return $result;
-    }
+        
 
-    public function updateUser($user_id , $name, $email, $password, $avatar, $address)
+    public function updateUser($user_id ,$name, $fullname, $email, $phone, $address , $avatar)
     {
         $db = new connect();
-        $query = "UPDATE users SET `name`='$name', `email`='$email', `password`='$password', `avatar`='$avatar', `address`='$address' WHERE user_id  = ".$user_id ;
+        $query = "UPDATE users SET `name`='$name', `fullname`='$fullname',`email`='$email', `phone`='$phone', `address`='$address', `avatar`='$avatar' WHERE user_id  = ".$user_id ;
         $result = $db->pdo_query($query);
         return $result;
     }
+    public function updateUser2($user_id, $name, $fullname, $email, $password, $avatar, $address)
+    {
+        $db = new connect();
+        $query = "UPDATE users SET `name`=?, `fullname`=?,`email`=?, `password`=?, `avatar`=?, `address`=? WHERE `user_id`=?";
+        $result = $db->pdo_execute($query, $name, $fullname,$email, $password, $avatar, $address, $user_id);
+        return $result;
+    }
+    
+   
 }
 ?>

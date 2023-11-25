@@ -840,6 +840,7 @@ button.ghost {
 	text-align: center;
 }
 
+
 .input {
 	background-color: #eee;
 	border: none;
@@ -872,6 +873,7 @@ button.ghost {
 	width: 50%;
 	z-index: 2;
 }
+
 
 .container.right-panel-active .sign-in-container {
 	transform: translateX(100%);
@@ -984,3 +986,4 @@ button.ghost {
 	height: 40px;
 	width: 40px;
 }
+
