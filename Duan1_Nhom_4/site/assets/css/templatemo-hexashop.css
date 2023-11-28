@@ -116,7 +116,7 @@ global styles
 html,
 body {
   background: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 ::selection {
@@ -794,12 +794,12 @@ Men
 #men .item .down-content span {
   font-size: 18px;
   color: #a1a1a1;
-  font-weight: 500;
+  font-weight: 700;
   display: block;
 }
 
 #men .item .down-content ul.stars {
-  position: absolute;
+  /* position: absolute; */
   right: 0;
   top: 30px;
 }
@@ -1732,7 +1732,7 @@ Single Product Page
 #product .left-images img {
   /* width: 100%; */
   overflow: hidden;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 #product .right-content {
@@ -1751,7 +1751,7 @@ Single Product Page
 #product .right-content span.price {
   font-size: 18px;
   color: #a1a1a1;
-  font-weight: 500;
+  font-weight: 700;
   display: block;
   margin-top: 5px;
   border-bottom: 1px solid #eee;
@@ -1759,7 +1759,7 @@ Single Product Page
 }
 
 #product .right-content ul.stars {
-  position: absolute;
+  /* position: absolute; */
   right: 0;
   top: 0;
 }
@@ -1770,9 +1770,9 @@ Single Product Page
 }
 
 #product .right-content span {
-  font-size: 14px;
+  font-size: 19px;
   color: #aaaaaa;
-  font-weight: 500;
+  font-weight: 700;
   display: block;
   margin-top: 25px;
 }
