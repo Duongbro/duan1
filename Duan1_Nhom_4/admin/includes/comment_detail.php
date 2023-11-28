@@ -33,12 +33,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php                
+                                        $ds = new comment();
+                                        $product_id = $_GET['product_id'];
+                                        foreach ($ds->getComment_Detail_Admin($product_id) as $row){
+                                    ?>
                                         <tr>
-                                            <td>Cái này đẹp quá</td>
-                                            <td>Nguyễn Thái Dương</td>
-                                            <td>18-11-2023</td>
-                                            <td><button type="button" class="btn btn-gradient-primary btn-sm">Xóa</button></td>
+                                            <td><?=$row['content']?></td>
+                                            <td><?=$row['user_cmt']?></td>
+                                            <td><?=$row['date']?></td>
+                                            <td><a href="?page=delete_comment&comment_id=<?=$row['comment_id']?>"><button type="button" class="btn btn-gradient-primary btn-sm">Xóa</button></a></td>
                                         </tr>
+                                    <?php
+                                        }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>

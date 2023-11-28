@@ -34,13 +34,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php                
+                                        $ds = new comment();
+                                        foreach ($ds->getComment_Admin() as $row){
+                                    ?>
                                         <tr>
-                                            <td>Đồng hồ Rolex</td>
-                                            <td>15</td>
-                                            <td>18-11-2023</td>
-                                            <td>1-11-2023</td>
-                                            <td><a href="?page=comment_detail"><button type="button" class="btn btn-gradient-primary btn-sm">Chi tiết</button></a></td>
+                                            <td><?=$row['name']?></td>
+                                            <td><?=$row['count']?></td>
+                                            <td><?=$row['old']?></td>
+                                            <td><?=$row['new']?></td>
+                                            <td><a href="?page=comment_detail&product_id=<?=$row['product_id']?>"><button type="button" class="btn btn-gradient-primary btn-sm">Chi tiết</button></a></td>
                                         </tr>
+                                    <?php
+                                        }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
