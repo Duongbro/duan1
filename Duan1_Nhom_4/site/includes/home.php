@@ -125,77 +125,43 @@
             <div class="col-lg-12">
                 <div class="men-item-carousel">
                     <div class="owl-men-item owl-carousel">
+                        <?php                
+                            $db = new products();
+                            foreach ($db->getList() as $row){
+                        ?>
                         <div class="item">
                             <div class="thumb">
                                 <div class="hover-content">
                                     <ul>
-                                        <li><a href="?page=detail"><i class="fa fa-eye"></i></a></li>
+                                        <li><a href="?page=detail&product_id=<?=$row['product_id']?>&category_id=<?=$row['category_id']?>"><i class="fa fa-eye"></i></a></li>
                                         <li><a href=""><i class="fa fa-star"></i></a></li>
                                         <li><a href="?page=cart"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
                                 </div>
-                                <img src="assets/images/dongho1.webp" alt="">
+                                <img src="assets/images/<?=$row['img']?>" alt="">
                             </div>
                             <div class="down-content">
-                                <h4>Đồng Hồ Casio 43.5mm Nam MTP-1374D-1AVDF</h4>
-                                <span style="color: red;">1.740.000₫</span>
-                                <!-- <ul class="stars">
+                                <h4><?=$row['name']?></h4>
+                                <ul class="stars">
                                     <li><i class="fa fa-star"></i></li>
                                     <li><i class="fa fa-star"></i></li>
                                     <li><i class="fa fa-star"></i></li>
                                     <li><i class="fa fa-star"></i></li>
                                     <li><i class="fa fa-star"></i></li>
-                                </ul> -->
+                                </ul>
+                                <span style="color: red;"><?=number_format($row['sale_price'], 0, ",", ".")?>₫</span>
+                                <span style="color: grey; text-decoration: line-through; font-weight: 100; font-size: 15px; width:100px;float: left;"><?=number_format($row['price'], 0, ",", ".")?>₫</span>
+                                <?php
+                                    //Tính phần trăm giá giảm
+                                    $percent_price_reduction = round(($row['sale_price'] / $row['price']) * 100, 0);
+                                    $percent_discount = 100 - $percent_price_reduction;
+                                ?>
+                                <span class="percent_discount" style=" font-size: 12px; color: #ef5555; width: 30px;font-weight: 100;float: left;" ><?= $percent_discount?>%</span>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="thumb">
-                                <div class="hover-content">
-                                    <ul>
-                                        <li><a href="?page=detail"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                                        <li><a href="?page=cart"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img src="assets/images/dongho2.webp" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Đồng Hồ Olym Pianus 42mm Nam OP990-45ADGS-GL-X</h4>
-                                <span style="color:red;">6.550.000₫</span>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb">
-                                <div class="hover-content">
-                                    <ul>
-                                        <li><a href="?page=detail"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                                        <li><a href="?page=cart"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img src="assets/images/dongho3.webp" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Đồng Hồ Casio 42mm Nam MTP-1375L-1AVDF</h4>
-                                <span style="color:red;">1.670.000₫</span>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="thumb">
-                                <div class="hover-content">
-                                    <ul>
-                                        <li><a href="?page=detail"><i class="fa fa-eye"></i></a></li>
-                                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                                        <li><a href="?page=cart"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <img src="assets/images/dongho4.webp" alt="">
-                            </div>
-                            <div class="down-content">
-                                <h4>Đồng Hồ Casio 41mm Nam MTP-1384L-7AVDF</h4>
-                                <span style="color:red;">1.740.000₫</span>
-                            </div>
-                        </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
