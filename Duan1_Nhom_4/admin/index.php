@@ -25,7 +25,9 @@
 include_once 'includes/pdo.php';
 include 'user/user.php';
 include "category/category.php";
-
+include "comment/comment.php";
+include "orders/order.php";
+include "products/product.php";
 
 
 $action = 'home';
@@ -74,6 +76,27 @@ switch ($action) {
         break;
     case 'product_update':
         include 'includes/product_update.php';
+        break;
+    case 'add_category':
+        include 'category/add.php';
+        break;
+    case 'update_category':
+        include 'category/update.php';
+        break;
+    case 'delete_category':
+        include 'category/delete.php';
+        break;
+    case 'delete_comment':
+        include 'comment/delete.php';
+        break;
+    case 'delete_user':
+        include 'user/delete.php';
+        break;
+    case 'order_detail':
+        include 'includes/order_detail.php';
+        break;
+    case 'add_product':
+        include 'products/add.php';
         break;
     case "logout":
         unset($_SESSION['admin']);
