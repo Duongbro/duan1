@@ -35,22 +35,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><img src="content/assets/images/faces/face1.jpg" class="me-2" alt="image"></td>
-                                            <td>Nguyễn Thái Dương</td>
-                                            <td>nguyenduongthai000@gmail.com</td>
-                                            <td>0949373325</td>
-                                            <td>Quản trị viên</td>
-                                            <td><button type="button" class="btn btn-gradient-primary btn-sm">Xóa</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="content/assets/images/faces/face1.jpg" class="me-2" alt="image"></td>
-                                            <td>Nguyễn Thái Dương</td>
-                                            <td>nguyenduongthai000@gmail.com</td>
-                                            <td>0949373325</td>
-                                            <td>Quản trị viên</td>
-                                            <td><button type="button" class="btn btn-gradient-primary btn-sm">Xóa</button></td>
-                                        </tr>
+                                        <?php
+                                        $db = new users();
+                                        foreach ($db->getUsers() as $row) {
+                                        ?>
+                                            <tr>
+                                                <td><img src="content/assets/images/faces/<?= $row['name'] ?>" class="me-2" alt="avatar"></td>
+                                                <td><?= $row['name'] ?></td>
+                                                <td><?= $row['email'] ?></td>
+                                                <td><?= $row['phone'] ?></td>
+                                                <td><?= $row['role'] == 1 ? "Nhân Viên" : "Khách hàng"; ?></td>
+                                                <td><a href="?page=delete_user&user_id=<?=$row['user_id']?>"><button type="button" class="btn btn-gradient-primary btn-sm">Xóa</button></a></td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
