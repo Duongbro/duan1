@@ -1,4 +1,6 @@
-<?php session_start() ?>
+<?php session_start();
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +49,7 @@
     // include "../admin/product/product.php";
     // include "../admin/category/category.php";
     include "../admin/user/user.php";
+    include "../site/phpemail/index.php";
     
     // include "../admin/comment/comment.php";
 
@@ -76,7 +79,16 @@
             break;
         case "changepassword":
             include 'includes/changepassword.php';
-            break;        
+            break;
+        case "quenpassword":
+            include 'includes/quenpassword.php';
+            break;
+        case "formlink":
+            include 'includes/formlink.php';
+            break;  
+        case "quenpasswordtext":
+            include 'includes/quenpasswordtext.php';
+            break;                        
         case "search":
             include 'includes/search.php';
             break;

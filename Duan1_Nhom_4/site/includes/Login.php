@@ -87,6 +87,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="#">Quên mật khẩu?</a>
             
             <button type="submit">Đăng nhập</button>
+            <br>
+            <br>
+            Hoặc đăng nhập bằng
+            <br>
+            <br>
+            <a href=""><img src="../img/google.png" alt="" width="60px"></a>
+           
         </form>
 
     </div>
